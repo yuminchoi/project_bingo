@@ -6,6 +6,12 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
+int user_bingo[N][N];
+int com_bingo[N][N];
+int count;
+int num;
+
+
 void initate_bingo(int bingo[N][N]){
 	int i, j, k, l;
 	
@@ -46,15 +52,22 @@ void print_bingo(int bingo[N][N]){
 
 
 void get_number_byMe(int bingo[N][N], int num){
+	int i, j;
+	
 	printf("Choose your number: ");
 	scanf("%d", &num);
 	if(num<1||num>(N*N))
 	{
 		printf("범위밖의 숫자입니다.\n");
 		printf("Choose your number: ");
-		scanf(%d, &num);
+		scanf("%d", &num);
 	}
-	//이전에 선택했던 숫자를 선택했을경우 메시지 출력 
+	if(bingo[i][j]!=num)
+	{
+		printf("이전에 선택했던 숫자입니다.\n");
+		printf("Choose your number: ");
+		scanf("%d", &num);
+	}
 }
 
 
@@ -95,7 +108,7 @@ void process_bingo(int bingo[N][N], int num){
 
 void count_bingo(int bingo[N][N], int count){
 	int sum=0;
-	int i, j;
+	int i, j, k, m, n;
 	for(i=0;i<N;i++)
 	{
 		if(bingo[i][j]==-1)
@@ -121,7 +134,7 @@ void count_bingo(int bingo[N][N], int count){
 		count++;
 	}
 	
-	sum=0
+	sum=0;
 	for(k=0;k<N;k++)
 	{
 		if(bingo[k][k])
@@ -150,6 +163,10 @@ void count_bingo(int bingo[N][N], int count){
 
 
 int main(int argc, char *argv[]) {
+	
+	initate_bingo(user_bingo);
+	initate_bingo(com_bingo);
+	
 	do
 	{
 	}while()
