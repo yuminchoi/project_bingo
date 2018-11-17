@@ -67,10 +67,30 @@ void get_number_byCom(){
 }
 
 
-void process_bingo()
-void count_bingo()
+void process_bingo(int bingo[N][N], int num){
+	int i, j;
+	for(i=0;i<N;i++)
+	{
+		for(j=0;j<N;j++)
+		{
+			if(bingo[i][j]==num)
+			{
+				bingo[i][j]=-1;
+			}
+		}
+	}
+	
+}
+
+
+void count_bingo(){
+	
+}
 
 
 int main(int argc, char *argv[]) {
+	do
+	{
+	}while()
 	return 0;
 }
