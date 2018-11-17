@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 #define N 5
+#define WIN 3
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 void initate_bingo(int bingo[N][N]){
-	int i, j, k;
+	int i, j, k, l;
 	
 	srand((unsigned)time(NULL));
 	for (i=0;i<N;i++)
@@ -16,10 +17,13 @@ void initate_bingo(int bingo[N][N]){
 			bingo[i][j]=rand()%(N*N)+1;
 			for(k=0;k<N;k++)
 			{
-				if(bingo[i][j]==bingo[i][k])
+				for(l=0;l<j;l++)
 				{
-					j--;
-					break;
+					if(bingo[i][j]==bingo[k][l])
+					{
+						j--;
+						break;
+					}
 				}
 			}
 		}
@@ -41,8 +45,28 @@ void print_bingo(int bingo[N][N]){
 
 
 
-void get_number_byMe()
-void get_number_byCom()
+void get_number_byMe(){
+	int num;
+	printf("Choose your number: ");
+	scanf("%d", &num);
+	if(num<1||num>25)
+	{
+		printf("범위밖의 숫자입니다.\n");
+		printf("Choose your number: ");
+		scanf(%d, &num);
+	}
+	//이전에 선택했던 숫자를 선택했을경우 메시지 출력 
+}
+
+
+
+void get_number_byCom(){
+	int num_com;
+	num_com=rand()%(N*N)+1;
+	//똑같은 숫자를 선택했을 경우 바꿔줘야 
+}
+
+
 void process_bingo()
 void count_bingo()
 
