@@ -45,11 +45,10 @@ void print_bingo(int bingo[N][N]){
 
 
 
-void get_number_byMe(){
-	int num;
+void get_number_byMe(int bingo[N][N], int num){
 	printf("Choose your number: ");
 	scanf("%d", &num);
-	if(num<1||num>25)
+	if(num<1||num>(N*N))
 	{
 		printf("범위밖의 숫자입니다.\n");
 		printf("Choose your number: ");
@@ -60,10 +59,20 @@ void get_number_byMe(){
 
 
 
-void get_number_byCom(){
-	int num_com;
+void get_number_byCom(int bingo[N][N], int num_com){
+	int i, j;
+	srand((unsigned)time(NULL));
 	num_com=rand()%(N*N)+1;
-	//똑같은 숫자를 선택했을 경우 바꿔줘야 
+	for(i=0;i<N;i++)
+	{
+		for(j=0;j<N;j++)
+		{
+			if(bingo[i][j]!=num_com)
+			{
+				num_com=rand()%(N*N)+1;
+			}
+		}
+	}
 }
 
 
@@ -83,7 +92,7 @@ void process_bingo(int bingo[N][N], int num){
 }
 
 
-void count_bingo(){
+void count_bingo(int bingo[N][N]){
 	
 }
 
