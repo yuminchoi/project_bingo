@@ -73,6 +73,7 @@ void get_number_byCom(int bingo[N][N], int num_com){
 			}
 		}
 	}
+	printf("The number that computer chose: %d\n", num_com);
 }
 
 
@@ -92,8 +93,59 @@ void process_bingo(int bingo[N][N], int num){
 }
 
 
-void count_bingo(int bingo[N][N]){
+void count_bingo(int bingo[N][N], int count){
+	int sum=0;
+	int i, j;
+	for(i=0;i<N;i++)
+	{
+		if(bingo[i][j]==-1)
+		{
+			sum++;
+		}
+	}
+	if(sum==5)
+	{
+		count++;
+	}
 	
+	sum=0;
+	for(j=0;j<N;j++)
+	{
+		if(bingo[i][j]==-1)
+		{
+			sum++;
+		}
+	}
+	if(sum==5)
+	{
+		count++;
+	}
+	
+	sum=0
+	for(k=0;k<N;k++)
+	{
+		if(bingo[k][k])
+		{
+			sum++;
+		}
+	}
+	if(sum==5)
+	{
+		count++;
+	}
+	
+	sum=0;
+	for(m=0;m<N;m++)
+	{
+		for(n=N-1;n>=0;n--)
+		{
+			sum++;
+		}
+	}
+	if(sum==5)
+	{
+		count++;
+	}
 }
 
 
