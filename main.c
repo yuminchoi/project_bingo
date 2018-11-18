@@ -56,37 +56,44 @@ void get_number_byMe(int bingo[N][N], int num){
 	
 	printf("Choose your number: ");
 	scanf("%d", &num);
-	if(num<1||num>(N*N))
+	while(1>num||num>(N*N))
 	{
 		printf("범위밖의 숫자입니다.\n");
 		printf("Choose your number: ");
 		scanf("%d", &num);
 	}
-	if(bingo[i][j]!=num)
-	{
-		printf("이전에 선택했던 숫자입니다.\n");
-		printf("Choose your number: ");
-		scanf("%d", &num);
-	}
-}
-
-
-
-void get_number_byCom(int bingo[N][N], int num_com){
-	int i, j;
-	srand((unsigned)time(NULL));
-	num_com=rand()%(N*N)+1;
 	for(i=0;i<N;i++)
 	{
 		for(j=0;j<N;j++)
 		{
-			if(bingo[i][j]!=num_com)
+			while(bingo[i][j]!=num)
 			{
-				num_com=rand()%(N*N)+1;
+				printf("이전에 선택했던 숫자입니다.\n");
+				printf("Choose your number: ");
+				scanf("%d", &num);
+			}				
+		}
+	}
+
+}
+
+
+
+void get_number_byCom(int bingo[N][N], int num){
+	int i, j;
+	srand((unsigned)time(NULL));
+	num=rand()%(N*N)+1;
+	for(i=0;i<N;i++)
+	{
+		for(j=0;j<N;j++)
+		{
+			while(bingo[i][j]!=num)
+			{
+				num=rand()%(N*N)+1;
 			}
 		}
 	}
-	printf("The number that computer chose: %d\n", num_com);
+	printf("The number that computer chose: %d\n", num);
 }
 
 
@@ -163,12 +170,44 @@ void count_bingo(int bingo[N][N], int count){
 
 
 int main(int argc, char *argv[]) {
+	int num_user, num_com;
+	int user_count, com_count;
+	int win;
+	int turn;
 	
 	initate_bingo(user_bingo);
 	initate_bingo(com_bingo);
+	print_bingo(user_bingo);
+	
 	
 	do
 	{
-	}while()
+		get_number_byMe(user_bingo, num_user);
+		process_bingo(user_bingo, num_user);
+		process_bingo(com_bingo, num_user);
+		get_number_byCom(com_bingo, num_com);
+		process_bingo(user_bingo, num_com);
+		process_bingo(com_bingo, num_com);
+		count_bingo(user_bingo, user_count);
+		count_bingo(com_bingo, com_count);
+		turn++;
+		
+		
+		if(com_count>=WIN)
+		{
+			print_bingo(com_bingo);
+			printf("COMPUTER WIN!\n");
+			win++;
+		}
+		else if(user_count>=WIN)
+		{
+			print_bingo(com_bingo);
+			printf("USER WIN!\n");
+			win++;
+		}
+	}while(win<1);
+	
+	printf("턴 수: %d", turn);
+	
 	return 0;
 }
