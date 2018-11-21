@@ -8,20 +8,24 @@ int count;
 int num;
 
 
-void initate_bingo(int bingo[N][N]){
+void initate_bingo(int bingo[N][N]){		//빙고를 처음에 만들어주는 함수 
 	int i, j, k, l;
 	
-	srand((unsigned)time(NULL));
+	srand((unsigned)time(NULL));		//할 때마다 다른 값이 나오도록 
 	for (i=0;i<N;i++)
 	{
-		for (j=0;j<N;j++)
+		for(j=0;j<N;j++)
 		{
-			bingo[i][j]=rand()%SIZE+1;
+			bingo[i][j]=rand()%SIZE+1;		
 			for(k=0;k<N;k++)
 			{
-				for(l=0;l<j;l++)
+				for(l=0;l<N;l++)
 				{
-					if(bingo[i][j]==bingo[k][l])
+					if(i==k&&j==l)		//만약 i=k, j=l이라면 bingo[i][j]는 무조건 bingo[k][l]과 값이 같으므로 순환문을 나오도록 
+					{
+						break;
+					}
+					if(bingo[i][j]==bingo[k][l])		//그 이외에 값이 같다면 배열에 중복이 일어났다는 뜻이므로 j를 한칸 줄여서 이전에 부여된 값이 초기화 되도록 
 					{
 						j--;
 						break;
