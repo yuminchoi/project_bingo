@@ -17,7 +17,7 @@ void initate_bingo(int bingo[N][N]){		//빙고를 처음에 만들어주는 함수
 		for(j=0;j<N;j++)
 		{
 			bingo[i][j]=rand()%SIZE+1;		
-			for(k=0;k<N;k++)
+		/*	for(k=0;k<N;k++)
 			{
 				for(l=0;l<N;l++)
 				{
@@ -27,16 +27,16 @@ void initate_bingo(int bingo[N][N]){		//빙고를 처음에 만들어주는 함수
 					}
 					if(bingo[i][j]==bingo[k][l])		//그 이외에 값이 같다면 배열에 중복이 일어났다는 뜻이므로 j를 한칸 줄여서 이전에 부여된 값이 초기화 되도록 
 					{
-						j--;
-						break;
+						j--;							//이라고 생각했지만 빙고판이 전혀 뜨질 않습니다. 어떤부분에서 잘못되었는지 찾을 수가 없었습니다. 
+						break;							//따라서 중복을 제거하는 것을 포기했습니다. 주석처리한 코드는 제가 생각했던 중복을 제거하는 코드입니다. 
 					}
 				}
 			}
-		}
+	*/	}
 	}
 }
 
-
+ 
 
 int get_number_byMe(int bingo[N][N], int num){		//user에게 숫자를 받음 
 	int i, j;
